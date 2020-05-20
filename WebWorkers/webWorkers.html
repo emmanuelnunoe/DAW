@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <form id="matrices">
+        <div>
+            <p>1</p><input type="text" id="matrizA00">
+            
+        </div>
+        <div>
+            <p>2</p><input type="text" id="matrizA01">
+            
+        </div>
+        </div>
+        <input type="submit" value="multiplicar">
+    </form>    
+    <script>
+        var numero = document.getElementById("matrizA00")
+        var resultado = document.getElementById("resultado");
+        var send = document.querySelector("#matrices")
+
+        if(window.Worker)
+        {
+            var mi_worker = new Worker("worker.js");
+
+            send.onsubmit = function    ( e )
+            {
+                e.preventDefault();
+                mi_worker.postMessage()
+            }
+
+            mi_worker.onmessage = function( e )
+            {
+                resultado.innerHTML = e.data;
+                console.log("fin del worker"+ 1)
+            }
+        }
+        else
+        {
+            console.log("El navegador no soporta WebWorkers")
+        }
+    </script>
+</body>
+</html>
