@@ -1,0 +1,8 @@
+.seccion {
+    background-color: rgb(233, 231, 231);
+    margin-top: 1vw;
+    width: 70%;
+    height: 20vw;
+    margin-inline-start: 15%;
+    font-family: Arial, Helvetica, sans-serif;
+}
